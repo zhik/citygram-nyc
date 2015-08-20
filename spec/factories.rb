@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   sequence :phone_number do |number|
-    "+#{number.to_s * 10}"[0...10]
+    "+1#{number.to_s * 10}"[0...12]
   end
 
   factory :publisher, class: Citygram::Models::Publisher do
