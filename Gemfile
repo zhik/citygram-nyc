@@ -37,13 +37,14 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'cucumber'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'launchy'
   gem 'rack-test'
   gem 'rspec', '~> 3.0'
   gem 'webmock'
-  gem 'webrat'
 end
 
 group :development, :test do

@@ -3,8 +3,8 @@ module Citygram::Routes
     helpers Citygram::Routes::Helpers
 
     get '/analytics' do
-      # @email_subscriptions_count = Subscription.email.count
-      # @sms_subscriptions_count = Subscription.sms.count
+      @email_subscriptions_count = Subscription.email.count
+      @sms_subscriptions_count = Subscription.sms.count
 
       erb :analytics
     end

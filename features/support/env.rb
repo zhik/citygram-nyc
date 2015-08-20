@@ -5,14 +5,16 @@ require app_file
 Sinatra::Application.app_file = app_file
 
 require 'byebug'
+require 'capybara/cucumber'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 require 'factory_girl'
 require 'rack/test'
 require 'rspec/expectations'
-require 'webrat'
 
 require 'spec/factories'
+
+Capybara.app = Rack::Builder.parse_file(File.expand_path('../../../config.ru', __FILE__)).first
 
 DatabaseCleaner[:sequel, {:connection => Sequel.connect(ENV['DATABASE_URL'])}]
 DatabaseCleaner.strategy = :truncation
@@ -21,21 +23,10 @@ Around do |scenario, block|
   DatabaseCleaner.cleaning(&block)
 end
 
-Webrat.configure do |config|
-  config.mode = :rack
-end
-
-class MyWorld
+class CityGramWorld
   include Rack::Test::Methods
-  include Webrat::Methods
-  include Webrat::Matchers
+  include Capybara::DSL
   include FactoryGirl::Syntax::Methods
-
-  Webrat::Methods.delegate_to_session :response_code, :response_body
-
-  def app
-    Sinatra::Application
-  end
 end
 
-World{MyWorld.new}
+World { CityGramWorld.new }
