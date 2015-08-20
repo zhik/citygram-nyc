@@ -19,6 +19,7 @@ describe Citygram::Routes::Subscriptions do
 
     it 'returns the record' do
       post '/subscriptions', params
+      debugger
       expect(last_response.body).to eq Subscription.last.to_json
     end
 
