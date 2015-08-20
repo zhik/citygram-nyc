@@ -1,5 +1,6 @@
 require 'factory_girl'
-require 'spec/support/fixture_helpers'
+require_relative '../app'
+require_relative 'support/fixture_helpers'
 
 FactoryGirl.define do
   sequence :email_address do |number|
