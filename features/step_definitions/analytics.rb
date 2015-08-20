@@ -1,3 +1,3 @@
-When(/^I visit '\/analytics'$/) do
+When(/^I visit Analytics$/) do
   visit '/analytics'
 end

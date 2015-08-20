@@ -6,6 +6,6 @@ Feature: Analytics
   Scenario: Viewing Analytics
     Given there are 200 Email Subscriptions
     And there are 150 SMS Subscriptions
-    When I visit '/analytics'
+    When I visit Analytics
     Then I should see '200 Email Subscriptions'
     And I should see '150 SMS Subscriptions'
