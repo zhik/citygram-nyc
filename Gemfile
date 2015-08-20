@@ -37,8 +37,15 @@ group :development do
 end
 
 group :test do
+  gem 'cucumber'
+  gem 'database_cleaner'
   gem 'factory_girl'
   gem 'rack-test'
   gem 'rspec', '~> 3.0'
   gem 'webmock'
+  gem 'webrat'
+end
+
+group :development, :test do
+  gem 'byebug'
 end
