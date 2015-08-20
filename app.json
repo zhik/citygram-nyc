@@ -59,7 +59,7 @@
     },
     "UNICORN_WORKERS": {
       "required": true
-    },
+    }
   },
   "addons": [
     "papertrail:choklad",
