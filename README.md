@@ -34,7 +34,8 @@ Citygram is a web application written in Ruby.
 
 * Install Redis - `brew install redis`
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
-* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
+* Install PostGIS -- refer to [these troubles](https://github.com/codeforamerica/citygram/issues/188) on Mac OS X
+* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
 
 In the command line, run the following:
 
@@ -43,9 +44,10 @@ In the command line, run the following:
 ```
 git clone https://github.com/codeforamerica/citygram.git
 cd citygram
-rbenv install local
+rbenv install
 brew install postgresql postgis
 gem install bundler
+rbenv rehash
 bundle install
 ```
 
