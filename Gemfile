@@ -28,10 +28,6 @@ gem 'twilio-ruby', '~> 3.11'
 gem 'uglifier'
 gem 'unicorn'
 
-group :production do
-  gem 'newrelic_rpm', require: false
-end
-
 group :development do
   gem 'foreman'
 end
