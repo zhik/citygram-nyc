@@ -11,6 +11,8 @@ app.state = {
   publisher_id: undefined,
 };
 
+L.mapbox.accessToken = 'pk.eyJ1IjoiYmlnZmxlZXQiLCJhIjoiY2swaDRqamQ3MDBkNzNtcGVzcnFwcDBvaiJ9.zX2y5xUXjSzqdLOA1dhG1A';
+
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
@@ -24,6 +26,7 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
+  L.mapbox.styleLayer("mapbox://styles/bigfleet/ck0i6duy10nm61co20ho8buia").addTo(map);
   var locality = document.getElementById('user-selected-locality');
   if ( locality != null ) {
     locality.onclick = function(e) {
@@ -350,8 +353,9 @@ app.scrollToElement = function(el) {
 
 app.geocode = function(address, city, state, callback, context) {
    var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
-      url += '&components=locality:' + encodeURIComponent(city);
-      url += '|administrative_area:' + encodeURIComponent(state);
+      url += encodeURIComponent(' '+city);
+      url += encodeURIComponent(' '+state);
+      url += '&key=AIzaSyCeF_VBd1M0V4ErSBbeerMgSyhalX9PIeM';
 
   $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
